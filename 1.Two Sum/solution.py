@@ -9,8 +9,6 @@ class Solution(object):
                 return[value_to_index_map[(target-nums[i])], i]
             value_to_index_map[nums[i]] = i
 
-        print(value_to_index_map)
-
 
 a = Solution()
 print((a.twoSum([-3, 4, 3, 90], 0)))
