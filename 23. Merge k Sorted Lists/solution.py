@@ -6,29 +6,34 @@ class ListNode:
 
 
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    def mergeKLists(self, lists):
         ordered_list = []
         minimum = 300000
         min_index = 0
+        min_el = None
         lists = list(filter(None, lists))
 
         while(len(lists) != 0):
 
             minimum = 300000
 
-            for index in range(0, len(lists)):
+            for index, lem in range(0, len(lists)):
 
                 if(lists[index].val < minimum):
-                    minimum = lists[index].val
+                    minimum = lem.val
                     min_index = index
+                    min_el = lem
             ordered_list.append(minimum)
-            if(lists[min_index].next == None):
-                lists.remove(lists[min_index])
-            else:
-                lists[min_index] = lists[min_index].next
+
+            lists[min_index] = min_el.next
         li = None
         for i in reversed(ordered_list):
             a = ListNode(i, li)
             li = a
 
         return li
+
+
+b = [None]
+a = Solution()
+print(a.mergeKLists(b))
